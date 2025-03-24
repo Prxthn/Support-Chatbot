@@ -98,7 +98,7 @@ const ChatBot = ({ session }) => {
         });
 
       // Get ChatGPT response
-      const res = await axios.post("http://localhost:8080/api/chat", 
+      const res = await axios.post("http://localhost:8081/api/chat", 
         { prompt: input },
         { headers: { "Content-Type": "application/json" }}
       );
@@ -208,6 +208,7 @@ const ChatBot = ({ session }) => {
                      maxWidth: '60%',
                      position: 'relative',
                      animation: 'fadeIn 0.5s ease-in-out',
+                     textAlign: 'left'
                    }}>
                 {msg.text}
                 <small className="d-block mt-1 text-end" 
