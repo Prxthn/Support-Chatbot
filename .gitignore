@@ -44,3 +44,9 @@ lerna-debug.log*
 # System files
 .DS_Store
 Thumbs.db
+
+# Added from the code block
+.env.*.local
+.venv/
+__pycache__/
+*.pyc
