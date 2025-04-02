@@ -13,6 +13,7 @@ target/
 !**/src/test/**/target/
 application-local.properties
 application-local.yml
+src/main/resources/application.properties
 
 # React/Vite
 node_modules/
@@ -45,7 +46,7 @@ lerna-debug.log*
 .DS_Store
 Thumbs.db
 
-# Added from the code block
+# Python
 .env.*.local
 .venv/
 __pycache__/
