@@ -23,7 +23,7 @@ const ChatBot = ({ session }) => {
     setInput(""); // Clear input after sending message
 
     try {
-      const res = await axios.post("http://localhost:8080/api/chat", { prompt: input }, {
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/chat`, { prompt: input }, {
         headers: { "Content-Type": "application/json" },
       });
 

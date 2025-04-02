@@ -98,7 +98,7 @@ const ChatBot = ({ session }) => {
         });
 
       // Get ChatGPT response
-      const res = await axios.post("http://localhost:8081/api/chat", 
+      const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/chat`, 
         { prompt: input },
         { headers: { "Content-Type": "application/json" }}
       );

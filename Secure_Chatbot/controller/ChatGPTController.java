@@ -12,16 +12,12 @@ import org.springframework.http.MediaType;
 import com.openaiChatbot.Secure_Chatbot.service.ChatGPTService;
 import com.openaiChatbot.Secure_Chatbot.dto.PromptRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.beans.factory.annotation.Value;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/chat")
 public class ChatGPTController {
     private final ChatGPTService chatGPTService;
-    
-    @Value("${flask.api.url}")
-    private String flaskApiUrl;
 
     public ChatGPTController(ChatGPTService chatGPTService) {
         this.chatGPTService = chatGPTService;
@@ -29,6 +25,8 @@ public class ChatGPTController {
 
     // Function to call the Python anonymization API
     private String anonymizeText(String text) {
+        String apiUrl = "http://127.0.0.1:5000/anonymize";
+
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -37,7 +35,7 @@ public class ChatGPTController {
         HttpEntity<String> request = new HttpEntity<>(requestBody, headers);
 
         try {
-            ResponseEntity<String> response = restTemplate.postForEntity(flaskApiUrl, request, String.class);
+            ResponseEntity<String> response = restTemplate.postForEntity(apiUrl, request, String.class);
             return response.getBody();  // Return anonymized text
         } catch (Exception e) {
             System.err.println("Error calling Flask API: " + e.getMessage());
